@@ -1,0 +1,16 @@
+<!-- <nav class="navbar fixed-top navbar-light bg-light row">
+  <div class="container">
+    <span class="navbar-text"> Navbar text with an inline element </span>
+  </div>
+</nav> -->
+
+<div class="header row">
+  <h1>Contacts</h1>
+  <a routerLink="/new"> New</a>
+</div>
+
+<div class="contact-list">
+  <div class="row" *ngFor="let contact of data">
+    <app-contact [contact]="contact"></app-contact>
+  </div>
+</div>
