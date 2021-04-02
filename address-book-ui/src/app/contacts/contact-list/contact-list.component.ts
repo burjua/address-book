@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { Contact } from '../contact.model';
+import { IAppState } from '../store/reducer';
 
 @Component({
   selector: 'app-contact-list',
@@ -6,178 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-list.component.scss'],
 })
 export class ContactListComponent implements OnInit {
-  data = [
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-    {
-      firstName: 'first',
-      surname: 'surname',
-      email: 'test@test.com',
-      dob: 'DoB',
-    },
-  ];
+  contacts: Contact[] = [];
 
-  constructor() {}
+  constructor(private store: Store<IAppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store
+      .select((s) => s.state.contacts)
+      .subscribe((contacts) => {
+        // console.log('contacts: ', contacts);
+        this.contacts = contacts;
+      });
+  }
 }

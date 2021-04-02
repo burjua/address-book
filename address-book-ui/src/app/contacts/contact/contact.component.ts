@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Contact } from '../contact';
+import { Contact } from '../contact.model';
 
 @Component({
   selector: 'app-contact',
@@ -8,8 +8,13 @@ import { Contact } from '../contact';
 })
 export class ContactComponent implements OnInit {
   @Input() contact: Contact = {} as Contact;
+  initials = 'AA';
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  // getInitials() {
+  //   return ()
+  // }
 }

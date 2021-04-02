@@ -1,7 +1,20 @@
 <div class="contact">
-  {{ contact.firstName }}
-  {{ contact.surname }}
-  {{ contact.email }}
-  {{ contact.dob }}
-  <a routerLink="/edit">Edit</a>
+  <div class="contact__avatar">
+    {{ initials }}
+  </div>
+  <div class="contact__details">
+    <div class="first-name">
+      {{ contact.firstName }}
+    </div>
+    <div class="surname">
+      {{ contact.surname }}
+    </div>
+    <div>
+      {{ contact.email }}
+      {{ contact.dob }}
+    </div>
+  </div>
+  <div class="contact__controls">
+    <a routerLink="/edit">Edit</a>
+  </div>
 </div>
