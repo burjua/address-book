@@ -1,0 +1,76 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <mat-label>* First name</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error *ngIf="contactForm.controls.firstName.hasError('required')">
+        First name is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="contactForm.controls.firstName.hasError('maxlength')">
+        First name cannot be longer than
+        <strong>{{ maxLength }}</strong> characters
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <mat-label>* Surname</mat-label>
+      <input matInput formControlName="surname" />
+      <mat-error *ngIf="contactForm.controls.surname.hasError('required')">
+        Surname is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="contactForm.controls.surname.hasError('maxlength')">
+        Surname cannot be longer than
+        <strong>{{ maxLength }}</strong> characters
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <mat-label>* Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error
+        *ngIf="
+          contactForm.controls.email.hasError('email') &&
+          !contactForm.controls.email.hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="contactForm.controls.email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group datepicker">
+    <mat-form-field>
+      <mat-label>* Date of Birth</mat-label>
+      <input
+        matInput
+        readonly
+        [max]="yesterday"
+        formControlName="dob"
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="contactForm.controls.dob.hasError('required')">
+        Date of Birth is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <button
+      [disabled]="!contactForm.valid || !formHasChanges"
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>

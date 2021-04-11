@@ -1,1 +1,11 @@
-<p>new-contact works!</p>
+<div class="header row">
+  <a routerLink="/contacts">Back</a>
+  <h1>New contact</h1>
+</div>
+
+<div>
+  <app-contact-form
+    (onValidContact)="onValidContact($event)"
+    (hasChanges)="onHasChanges($event)"
+  ></app-contact-form>
+</div>

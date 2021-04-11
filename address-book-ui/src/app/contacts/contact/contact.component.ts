@@ -8,13 +8,17 @@ import { Contact } from '../contact.model';
 })
 export class ContactComponent implements OnInit {
   @Input() contact: Contact = {} as Contact;
-  initials = 'AA';
+  initials = '';
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initials = this.getInitials(this.contact);
+  }
 
-  // getInitials() {
-  //   return ()
-  // }
+  private getInitials(contact: Contact): string {
+    return `${contact.firstName
+      .substring(0, 1)
+      .toUpperCase()}${contact.surname.substring(0, 1).toUpperCase()}`;
+  }
 }

@@ -10,3 +10,8 @@ export const addContact = createAction(
   '[] Add Contact',
   props<{ contact: Contact }>()
 );
+
+export const updateContact = createAction(
+  '[] Update Contact',
+  props<{ contact: Contact }>()
+);

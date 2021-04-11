@@ -1,4 +1,4 @@
-<div class="contact">
+<div class="contact col-12">
   <div class="contact__avatar">
     {{ initials }}
   </div>
@@ -15,6 +15,7 @@
     </div>
   </div>
   <div class="contact__controls">
-    <a routerLink="/edit">Edit</a>
+    <!-- <a [routerLink]="['/edit', contact.id]">Edit</a> -->
+    <a routerLink="/edit/{{ contact.id }}">Edit</a>
   </div>
 </div>

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Contact } from '../contact.model';
-import { IAppState } from '../store/reducer';
+import { Observable } from 'rxjs';
+import { IAppState } from '../store/state';
 
 @Component({
   selector: 'app-contact-list',
@@ -10,16 +11,11 @@ import { IAppState } from '../store/reducer';
   styleUrls: ['./contact-list.component.scss'],
 })
 export class ContactListComponent implements OnInit {
-  contacts: Contact[] = [];
+  contacts$: Observable<Contact[]>;
 
   constructor(private store: Store<IAppState>) {}
 
   ngOnInit(): void {
-    this.store
-      .select((s) => s.state.contacts)
-      .subscribe((contacts) => {
-        // console.log('contacts: ', contacts);
-        this.contacts = contacts;
-      });
+    this.contacts$ = this.store.select((s) => s.state.contacts);
   }
 }
