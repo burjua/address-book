@@ -1,18 +1,19 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { IState } from './state';
+import { orderBy } from 'lodash';
 
 export const getContactsState = createFeatureSelector<IState>('state');
 
-export const getContactById = createSelector(
+export const getSortedContacts = createSelector(
   getContactsState,
-  (state: IState, props) => {
-    return state.contacts.find((c) => c.id === props.id);
+  (state: IState) => {
+    return orderBy(state.contacts, 'surname');
   }
 );
 
-export const contactExists = createSelector(
+export const getContactById = createSelector(
   getContactsState,
-  (state: IState, props) => {
-    return !!state.contacts.find((c) => c.id === props.id);
+  (state: IState, id) => {
+    return state.contacts.find((c) => c.id === id);
   }
 );

@@ -42,6 +42,9 @@
       <mat-error *ngIf="contactForm.controls.email.hasError('required')">
         Email is <strong>required</strong>
       </mat-error>
+      <!-- <mat-error *ngIf="contactForm.controls.email.hasError('invalidAsync')">
+        Contact with this email already exists
+      </mat-error> -->
     </mat-form-field>
   </div>
 
@@ -65,7 +68,7 @@
 
   <div class="form-group">
     <button
-      [disabled]="!contactForm.valid || !formHasChanges"
+      [disabled]="!contactForm.valid || !hasChanges"
       mat-raised-button
       color="primary"
       type="submit"

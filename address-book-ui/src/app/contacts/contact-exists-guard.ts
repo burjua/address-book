@@ -7,7 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from './store/state';
-import { contactExists } from './store/selectors';
+import { getContactById } from './store/selectors';
 
 @Injectable()
 export class ContactExistsGuard implements CanActivate {
@@ -17,15 +17,13 @@ export class ContactExistsGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<any> {
-    console.log('ContactExistsGuard canActivate: ', next.params.id);
-
-    const id = +next.params.id;
-
+    // console.log('ContactExistsGuard canActivate: ', next.params.id);
     return new Promise((resolve) => {
-      this.store.select(contactExists, { id }).subscribe((result) => {
+      this.store.select(getContactById, +next.params.id).subscribe((result) => {
         if (result) {
           resolve(true);
         } else {
+          // returning UrlTree instead of redirecting is preferable as this allows complex route guards handle redirects appropriately
           resolve(this.router.parseUrl('/notfound'));
         }
       });

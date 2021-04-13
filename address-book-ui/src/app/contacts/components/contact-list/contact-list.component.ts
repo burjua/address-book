@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { Contact } from '../contact.model';
+import { Contact } from '../../contact.model';
 import { Observable } from 'rxjs';
-import { IAppState } from '../store/state';
+import { IAppState } from '../../store/state';
+import { getSortedContacts } from '../../store/selectors';
 
 @Component({
   selector: 'app-contact-list',
@@ -16,6 +17,7 @@ export class ContactListComponent implements OnInit {
   constructor(private store: Store<IAppState>) {}
 
   ngOnInit(): void {
-    this.contacts$ = this.store.select((s) => s.state.contacts);
+    // this.contacts$ = this.store.select((s) => s.state.contacts);
+    this.contacts$ = this.store.select(getSortedContacts);
   }
 }

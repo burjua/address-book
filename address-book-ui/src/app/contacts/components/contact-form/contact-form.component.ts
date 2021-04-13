@@ -9,9 +9,11 @@ import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
-import { Contact } from '../contact.model';
+import { Contact } from '../../contact.model';
 import * as moment from 'moment';
 import { cloneDeep, isEqual } from 'lodash';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../../store/state';
 
 const MY_FORMATS = {
   parse: {
@@ -42,20 +44,22 @@ const MY_FORMATS = {
 export class ContactFormComponent implements OnInit {
   @Input() contact: Contact;
   @Output() onValidContact = new EventEmitter<Contact>();
-  @Output() hasChanges = new EventEmitter<boolean>();
+  @Output() onChanges = new EventEmitter<boolean>();
 
   contactForm: FormGroup;
   yesterday: Date;
-  formHasChanges = false;
+  hasChanges = false;
 
-  private originalContact: Contact;
+  // private originalContact: Contact;
   readonly maxLength = 100;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store<IAppState>
+  ) {}
 
   ngOnInit(): void {
-    this.originalContact = cloneDeep(this.contact);
-    // console.log('this.originalContact', this.originalContact);
+    // this.originalContact = cloneDeep(this.contact);
 
     this.yesterday = new Date();
     this.yesterday.setDate(this.yesterday.getDate() - 1);
@@ -77,21 +81,16 @@ export class ContactFormComponent implements OnInit {
     });
 
     this.contactForm.valueChanges.subscribe((formValue) => {
-      this.formHasChanges = !isEqual(
-        this.serializeForm(),
-        this.originalContact
-      );
-      this.hasChanges.emit(this.formHasChanges);
+      this.hasChanges = !isEqual(this.serializeForm(), this.contact);
+      this.onChanges.emit(this.hasChanges);
 
-      // console.log('form value changed', formValue);
-      // console.log('hasChanges', has);
+      // console.log('form value changed', this.contactForm.controls.email.errors);
     });
   }
 
   onSubmit(): void {
     if (this.contactForm.valid) {
       const contact = this.serializeForm();
-      // console.log('ContactFormComponent contact: ', contact);
       this.onValidContact.emit(contact);
     }
   }

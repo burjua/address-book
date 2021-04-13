@@ -14,6 +14,7 @@ const _contactReducer = createReducer(
   })),
   on(updateContact, (state, { contact }) => ({
     contacts: [...state.contacts.filter((c) => c.id != contact.id), contact],
+    // contacts: [...state.contacts.map(c => c.id == contact.id ? contact | c)],
   }))
 );
 
