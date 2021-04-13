@@ -1,10 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 import { Contact } from './contact.model';
 import { loadContacts } from './store/actions';
 import { IAppState } from './store/state';
-import { Observable } from 'rxjs';
 
 const apiUrl = 'https://localhost:44323/api/contacts';
 

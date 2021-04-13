@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-import { addContact } from '../../store/actions';
-import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { take } from 'rxjs/operators';
+
 import { Contact } from '../../contact.model';
-import { IAppState } from '../../store/state';
 import { ContactsService } from '../../contacts.service';
-import { take, catchError } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { addContact } from '../../store/actions';
+import { IAppState } from '../../store/state';
 import { ContactFormContainer } from '../contact-form-container';
 
 @Component({
   selector: 'app-new-contact',
   templateUrl: '../contact-form-container.component.html',
 })
-export class NewContactComponent
-  extends ContactFormContainer
-  implements OnInit {
+export class NewContactComponent extends ContactFormContainer implements OnInit {
   constructor(
     router: Router,
     snackBar: MatSnackBar,

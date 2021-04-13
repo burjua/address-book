@@ -1,6 +1,7 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+
+import { Observable } from 'rxjs';
 
 export class ContactFormContainer {
   title = 'New contact';
@@ -27,9 +28,7 @@ export class ContactFormContainer {
 
   canDeactivate(): Observable<boolean> | boolean {
     if (this.hasChanges) {
-      return window.confirm(
-        'You have unsaved changes, do you want to proceed?'
-      );
+      return window.confirm('You have unsaved changes, do you want to proceed?');
     }
     return true;
   }

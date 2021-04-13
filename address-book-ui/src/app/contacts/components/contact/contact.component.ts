@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 import { Contact } from '../../contact.model';
 
 @Component({
@@ -17,8 +18,6 @@ export class ContactComponent implements OnInit {
   }
 
   private getInitials(contact: Contact): string {
-    return `${contact.firstName
-      .substring(0, 1)
-      .toUpperCase()}${contact.surname.substring(0, 1).toUpperCase()}`;
+    return `${contact.firstName.substring(0, 1).toUpperCase()}${contact.surname.substring(0, 1).toUpperCase()}`;
   }
 }

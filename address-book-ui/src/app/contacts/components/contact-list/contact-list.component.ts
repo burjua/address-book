@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { Contact } from '../../contact.model';
-import { Observable } from 'rxjs';
-import { IAppState } from '../../store/state';
 import { getSortedContacts } from '../../store/selectors';
+import { IAppState } from '../../store/state';
 
 @Component({
   selector: 'app-contact-list',

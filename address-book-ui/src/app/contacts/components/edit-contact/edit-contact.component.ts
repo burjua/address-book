@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Store } from '@ngrx/store';
+import { take } from 'rxjs/operators';
 
 import { Contact } from '../../contact.model';
-import { Observable, of } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { ContactsService } from '../../contacts.service';
+import { updateContact } from '../../store/actions';
 import { getContactById } from '../../store/selectors';
 import { IAppState } from '../../store/state';
-import { addContact, updateContact } from '../../store/actions';
-import { ContactsService } from '../../contacts.service';
-import { take } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ContactFormContainer } from '../contact-form-container';
 
 @Component({
   selector: 'app-edit-contact',
   templateUrl: '../contact-form-container.component.html',
 })
-export class EditContactComponent
-  extends ContactFormContainer
-  implements OnInit {
+export class EditContactComponent extends ContactFormContainer implements OnInit {
   constructor(
     router: Router,
     snackBar: MatSnackBar,

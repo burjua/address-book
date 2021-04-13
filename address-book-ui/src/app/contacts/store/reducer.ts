@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadContacts, addContact, updateContact } from './actions';
+
+import { addContact, loadContacts, updateContact } from './actions';
 import { IState } from './state';
 
 export const initialState: IState = {

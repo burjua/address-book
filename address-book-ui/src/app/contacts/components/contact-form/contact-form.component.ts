@@ -1,18 +1,13 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  DateAdapter,
-  MAT_DATE_LOCALE,
-  MAT_DATE_FORMATS,
-} from '@angular/material/core';
-import {
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
-import { Contact } from '../../contact.model';
-import * as moment from 'moment';
-import { cloneDeep, isEqual } from 'lodash';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
 import { Store } from '@ngrx/store';
+import { isEqual } from 'lodash';
+import * as moment from 'moment';
+
+import { Contact } from '../../contact.model';
 import { IAppState } from '../../store/state';
 
 const MY_FORMATS = {
@@ -53,10 +48,7 @@ export class ContactFormComponent implements OnInit {
   // private originalContact: Contact;
   readonly maxLength = 100;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private store: Store<IAppState>
-  ) {}
+  constructor(private formBuilder: FormBuilder, private store: Store<IAppState>) {}
 
   ngOnInit(): void {
     // this.originalContact = cloneDeep(this.contact);
@@ -73,10 +65,7 @@ export class ContactFormComponent implements OnInit {
         this.contact ? this.contact.surname : null,
         [Validators.required, Validators.maxLength(this.maxLength)],
       ],
-      email: [
-        this.contact ? this.contact.email : null,
-        [Validators.required, Validators.email],
-      ],
+      email: [this.contact ? this.contact.email : null, [Validators.required, Validators.email]],
       dob: [this.contact ? this.contact.dob : null, Validators.required],
     });
 

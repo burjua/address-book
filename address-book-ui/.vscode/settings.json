@@ -1,0 +1,38 @@
+{
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "html.format.wrapAttributes": "force",
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.importStringConfiguration.quoteMark": "single",
+  "importSorter.sortConfiguration.removeUnusedImports": true,
+  "importSorter.importStringConfiguration.trailingComma": "multiLine",
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "regex": "^@angular",
+      "orderLevel": 10
+    },
+    {
+      "regex": "^@",
+      "orderLevel": 20
+    },
+    {
+      "regex": "^[a-zA-Z0-9]",
+      "orderLevel": 20
+    },
+    {
+      "regex": "^[..]",
+      "orderLevel": 30
+    },
+    {
+      "regex": "^[.]",
+      "orderLevel": 30
+    }
+  ]
+}
