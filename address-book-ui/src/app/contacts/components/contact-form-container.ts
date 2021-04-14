@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class ContactFormContainer {
   title = 'New contact';
   contact = null;
-  error = '';
+  errors = undefined;
   hasChanges = false;
 
   constructor(private router: Router, private snackBar: MatSnackBar) {}

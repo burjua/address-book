@@ -30,7 +30,7 @@ export class NewContactComponent extends ContactFormContainer implements OnInit 
   }
 
   onValidContact(contact: Contact): void {
-    this.error = '';
+    this.errors = undefined;
 
     this.contactService
       .createContact(contact)
@@ -45,7 +45,7 @@ export class NewContactComponent extends ContactFormContainer implements OnInit 
         },
         (errorResult) => {
           // Error
-          this.error = errorResult.error;
+          this.errors = errorResult.error;
         }
       );
   }

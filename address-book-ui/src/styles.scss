@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./variables";
+@import './variables';
 
 html,
 body {
@@ -7,13 +7,16 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: #efefef;
 }
 
 .container {
   max-width: $contentWidth;
-  // height: 100%;
   background-color: white;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.alert {
+  overflow: hidden;
 }

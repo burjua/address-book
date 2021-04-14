@@ -4,8 +4,8 @@
 </div>
 
 <div>
-  <div *ngIf="error" class="alert alert-danger" role="alert">
-    {{ error }}
+  <div *ngFor="let error of errors" class="alert alert-danger" role="alert">
+    {{ error.errorMessage }}
   </div>
   <app-contact-form
     [contact]="contact"
