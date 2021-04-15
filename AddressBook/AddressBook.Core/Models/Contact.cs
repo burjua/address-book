@@ -1,4 +1,6 @@
-﻿namespace AddressBook.Core.Models
+﻿using System;
+
+namespace AddressBook.Core.Models
 {
     public class Contact
     {
@@ -6,6 +8,6 @@
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
-        public string Dob { get; set; }
+        public DateTime Dob { get; set; }
     }
 }

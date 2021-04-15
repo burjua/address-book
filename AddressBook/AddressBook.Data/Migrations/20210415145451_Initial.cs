@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AddressBook.Data.Migrations
 {
@@ -15,7 +16,7 @@ namespace AddressBook.Data.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Dob = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Dob = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,13 +28,13 @@ namespace AddressBook.Data.Migrations
                 columns: new[] { "Id", "Dob", "Email", "FirstName", "Surname" },
                 values: new object[,]
                 {
-                    { 1, "1900-01-01", "superman@dccomics.com", "Clark", "Kent" },
-                    { 2, "1900-01-01", "batman@dccomics.com", "Bruce", "Wayne" },
-                    { 3, "1900-01-01", "wonder.woman@dccomics.com", "Diana", "Prince" },
-                    { 4, "1900-01-01", "ironman@marvel.com", "Tony", "Stark" },
-                    { 5, "1900-01-01", "spiderman@marvel.com", "Peter", "Parker" },
-                    { 6, "1900-01-01", "hulk@marvel.com", "Bruce", "Banner" },
-                    { 7, "1900-01-01", "captain.america@marvel.com", "Steve", "Rogers" }
+                    { 1, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "superman@dccomics.com", "Clark", "Kent" },
+                    { 2, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "batman@dccomics.com", "Bruce", "Wayne" },
+                    { 3, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "wonder.woman@dccomics.com", "Diana", "Prince" },
+                    { 4, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ironman@marvel.com", "Tony", "Stark" },
+                    { 5, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "spiderman@marvel.com", "Peter", "Parker" },
+                    { 6, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hulk@marvel.com", "Bruce", "Banner" },
+                    { 7, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "captain.america@marvel.com", "Steve", "Rogers" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,5 +1,6 @@
 ﻿using AddressBook.Api.Resources;
 using FluentValidation;
+using System;
 
 namespace AddressBook.Api.Validators
 {
@@ -17,10 +18,11 @@ namespace AddressBook.Api.Validators
 
             RuleFor(s => s.Email)
                 .NotEmpty().WithMessage("Email address is required")
-                .EmailAddress().WithMessage("A valid email is required");
+                .EmailAddress().WithMessage("Valid email is required");
 
             RuleFor(s => s.Dob)
-                .NotEmpty().WithMessage("Date of birth is required");
+                .NotNull().WithMessage("Date of birth is required")
+                .LessThan(_ => DateTime.Now).WithMessage("Date of birth should be in the past");
         }
     }
 }
