@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
@@ -10,8 +10,7 @@ import { IAppState } from './store/state';
 export class ContactExistsGuard implements CanActivate {
   constructor(private router: Router, private store: Store<IAppState>) {}
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
-    // console.log('ContactExistsGuard canActivate: ', next.params.id);
+  canActivate(next: ActivatedRouteSnapshot): Promise<any> {
     return new Promise((resolve) => {
       this.store.select(getContactById, +next.params.id).subscribe((result) => {
         if (result) {

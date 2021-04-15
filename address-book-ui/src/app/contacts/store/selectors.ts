@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { orderBy } from 'lodash';
+import { orderBy } from 'lodash-es';
 
 import { IState } from './state';
 

@@ -18,7 +18,6 @@ export class ContactListComponent implements OnInit {
   constructor(private store: Store<IAppState>) {}
 
   ngOnInit(): void {
-    // this.contacts$ = this.store.select((s) => s.state.contacts);
     this.contacts$ = this.store.select(getSortedContacts);
   }
 }

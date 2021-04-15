@@ -4,7 +4,7 @@
 </div>
 
 <div class="contact-list">
-  <div class="row" *ngFor="let contact of contacts$ | async">
+  <div class="contact row" *ngFor="let contact of contacts$ | async">
     <app-contact [contact]="contact"></app-contact>
   </div>
 </div>

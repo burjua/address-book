@@ -3,22 +3,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
-import { Store } from '@ngrx/store';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import * as moment from 'moment';
 
 import { Contact } from '../../contact.model';
-import { IAppState } from '../../store/state';
 
 const MY_FORMATS = {
   parse: {
-    // dateInput: 'LL',
+    dateInput: 'LL',
   },
   display: {
     dateInput: 'LL',
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
+    monthYearA11yLabel: 'MMM YYYY',
   },
 };
 
@@ -42,20 +40,14 @@ export class ContactFormComponent implements OnInit {
   @Output() onChanges = new EventEmitter<boolean>();
 
   contactForm: FormGroup;
-  yesterday: Date;
+  today = new Date();
   hasChanges = false;
 
-  // private originalContact: Contact;
   readonly maxLength = 100;
 
-  constructor(private formBuilder: FormBuilder, private store: Store<IAppState>) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    // this.originalContact = cloneDeep(this.contact);
-
-    this.yesterday = new Date();
-    this.yesterday.setDate(this.yesterday.getDate() - 1);
-
     this.contactForm = this.formBuilder.group({
       firstName: [
         this.contact ? this.contact.firstName : null,
@@ -90,7 +82,7 @@ export class ContactFormComponent implements OnInit {
       firstName: this.contactForm.value.firstName,
       surname: this.contactForm.value.surname,
       email: this.contactForm.value.email,
-      dob: moment(this.contactForm.value.dob).format('YYYY-MM-DD'),
+      dob: moment(this.contactForm.value.dob).utc(true).toISOString(), // utc(true) to avoid timezone offset. As we only need date, we don't care about timezones
     };
   }
 }

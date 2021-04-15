@@ -55,6 +55,7 @@ export class EditContactComponent extends ContactFormContainer implements OnInit
           this.navigateHome();
         },
         (errorResult) => {
+          // Error
           this.errors = errorResult.error;
         }
       );
