@@ -3,8 +3,8 @@ import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import { getContactById } from './store/selectors';
-import { IAppState } from './store/state';
+import { getContactById } from '../store/selectors';
+import { IAppState } from '../store/state';
 
 @Injectable()
 export class ContactExistsGuard implements CanActivate {

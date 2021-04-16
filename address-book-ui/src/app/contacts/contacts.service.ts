@@ -14,9 +14,14 @@ const apiUrl = 'https://localhost:44323/api/contacts';
 export class ContactsService {
   constructor(private http: HttpClient, private store: Store<IAppState>) {}
 
-  loadContacts(): void {
-    this.http.get<Contact[]>(apiUrl).subscribe((contacts) => {
-      this.store.dispatch(loadContacts({ contacts: contacts }));
+  // returning promise from the function so APP_INITIALIZER will wait for it to resolve
+  // before loading the application
+  loadContacts(): Promise<void> {
+    return new Promise((resolve) => {
+      this.http.get<Contact[]>(apiUrl).subscribe((contacts) => {
+        this.store.dispatch(loadContacts({ contacts: contacts }));
+      });
+      resolve();
     });
   }
 

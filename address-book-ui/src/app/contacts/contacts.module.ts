@@ -11,15 +11,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { StoreModule } from '@ngrx/store';
 
-import { CanDeactivateGuard } from './can-deactivate-guard';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 import { NewContactComponent } from './components/new-contact/new-contact.component';
-import { ContactExistsGuard } from './contact-exists-guard';
-import { ContactsRoutingModule } from './contacts-routing.module';
 import { ContactsService } from './contacts.service';
+import { CanDeactivateGuard } from './routing/can-deactivate-guard';
+import { ContactExistsGuard } from './routing/contact-exists-guard';
+import { ContactsRoutingModule } from './routing/contacts-routing.module';
 import { contactReducer } from './store/reducer';
 
 export function init_app(contactsService: ContactsService) {
