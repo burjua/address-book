@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 @import './variables';
 
 html,
@@ -11,12 +11,46 @@ body {
   background-color: #efefef;
 }
 
+.header {
+  position: fixed;
+  width: $contentWidth;
+  height: $headerHeight;
+  padding: 10px;
+
+  background-color: #eee;
+  box-shadow: $boxShadow;
+  z-index: 1;
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    font-size: 24px;
+    line-height: 32px;
+
+    &--home {
+      margin-right: 10px;
+    }
+  }
+}
+
+.header::after {
+  display: block;
+  height: 70px;
+  background-color: red;
+}
+
 .container {
   max-width: $contentWidth;
   background-color: white;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: $boxShadow;
 }
 
-.alert {
-  overflow: hidden;
+.contact-form__container {
+  padding-top: 10px;
+
+  .alert {
+    overflow: hidden;
+  }
 }

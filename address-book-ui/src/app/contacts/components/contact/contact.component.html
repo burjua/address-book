@@ -10,11 +10,12 @@
       {{ contact.surname }}
     </div>
     <div>
-      {{ contact.email }}
-      {{ contact.dob | date }}
+      <span class="email"
+        ><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></span
+      >
     </div>
   </div>
   <div class="contact__controls">
-    <a routerLink="/edit/{{ contact.id }}">Edit</a>
+    <a routerLink="/edit/{{ contact.id }}"><i class="bi bi-pencil-square" title="Edit"></i></a>
   </div>
 </div>

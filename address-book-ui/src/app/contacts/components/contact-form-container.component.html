@@ -1,16 +1,16 @@
-<div class="header row">
-  <a routerLink="/contacts">Back</a>
-  <h1>{{ title }}</h1>
-</div>
+<app-header-details [title]="title"></app-header-details>
 
-<div>
-  <!-- Bootstrap alerts -->
-  <div *ngFor="let error of errors" class="alert alert-danger" role="alert">
-    {{ error.errorMessage }}
+<div class="row contact-form__container">
+  <div class="col-12">
+    <!-- Bootstrap alerts -->
+    <div *ngFor="let error of errors" class="alert alert-danger" role="alert">
+      {{ error.errorMessage }}
+    </div>
+
+    <app-contact-form
+      [contact]="contact"
+      (onValidContact)="onValidContact($event)"
+      (onChanges)="onChanges($event)"
+    ></app-contact-form>
   </div>
-  <app-contact-form
-    [contact]="contact"
-    (onValidContact)="onValidContact($event)"
-    (onChanges)="onChanges($event)"
-  ></app-contact-form>
 </div>

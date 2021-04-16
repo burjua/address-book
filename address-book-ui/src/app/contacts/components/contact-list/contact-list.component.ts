@@ -10,9 +10,9 @@ import { IAppState } from '../../store/state';
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.scss'],
 })
 export class ContactListComponent implements OnInit {
+  title = 'Contacts';
   contacts$: Observable<Contact[]>;
 
   constructor(private store: Store<IAppState>) {}

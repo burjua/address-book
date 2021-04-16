@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 
+import { SharedModule } from '../../../shared/shared.module';
 import { Contact } from '../../contact.model';
 import { ContactComponent } from '../contact/contact.component';
 import { ContactListComponent } from './contact-list.component';
@@ -31,16 +32,16 @@ describe('ContactListComponent', () => {
       },
     ];
 
-    const mockStore = {
+    const storeMock = {
       select: () => {
         return of(dummyContacts);
       },
     };
 
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, SharedModule],
       declarations: [ContactListComponent, ContactComponent],
-      providers: [{ provide: Store, useValue: mockStore }],
+      providers: [{ provide: Store, useValue: storeMock }],
     }).compileComponents();
   });
 

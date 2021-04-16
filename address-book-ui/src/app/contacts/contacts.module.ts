@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,6 +11,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { StoreModule } from '@ngrx/store';
 
+import { SharedModule } from '../shared/shared.module';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -40,6 +41,7 @@ export function init_app(contactsService: ContactsService) {
     MatSnackBarModule,
     ContactsRoutingModule,
     StoreModule.forRoot({ state: contactReducer }),
+    SharedModule,
   ],
   declarations: [
     ContactListComponent,
@@ -59,6 +61,5 @@ export function init_app(contactsService: ContactsService) {
       multi: true,
     },
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ContactsModule {}

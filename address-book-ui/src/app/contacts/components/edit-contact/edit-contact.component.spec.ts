@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -29,22 +30,18 @@ describe('EditContactComponent', () => {
       paramMap: of(routeParamMapMock),
     } as any;
 
-    const mockStore = {
+    const storeMock = {
       select: () => {
         return of({});
       },
       dispatch: () => {},
     };
 
-    const snackBarMock = {
-      // open: () => {},
-    };
+    const snackBarMock = {};
 
     const routerMock = {};
 
-    const serviceMock = {
-      // post: () => {},
-    };
+    const serviceMock = {};
 
     await TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
@@ -55,8 +52,9 @@ describe('EditContactComponent', () => {
         { provide: MatSnackBar, useValue: snackBarMock },
         { provide: ContactsService, useValue: serviceMock },
         { provide: Router, useValue: routerMock },
-        { provide: Store, useValue: mockStore },
+        { provide: Store, useValue: storeMock },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

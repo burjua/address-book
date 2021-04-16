@@ -56,6 +56,7 @@ export class EditContactComponent extends ContactFormContainer implements OnInit
         },
         (errorResult) => {
           // Error
+          // error is an array of errors returned by fluent validation on backend
           this.errors = errorResult.error;
         }
       );
