@@ -17,6 +17,7 @@ describe('ContactsService', () => {
     service = new ContactsService(httpMock, storeMock);
   });
 
+  // service test example
   describe('loadContacts', () => {
     it('should call GET and dispatch received response', fakeAsync(() => {
       httpMock.get = jasmine.createSpy().and.returnValue(of([]));

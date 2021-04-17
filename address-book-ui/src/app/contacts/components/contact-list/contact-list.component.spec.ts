@@ -56,6 +56,6 @@ describe('ContactListComponent', () => {
   });
 
   it('should display contacts', () => {
-    expect(fixture.debugElement.queryAll(By.css('.contact.row')).length).toBe(2);
+    expect(fixture.debugElement.queryAll(By.css('app-contact')).length).toBe(2);
   });
 });

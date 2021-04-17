@@ -64,8 +64,6 @@ export class ContactFormComponent implements OnInit {
     this.contactForm.valueChanges.subscribe((formValue) => {
       this.hasChanges = !isEqual(this.serializeForm(), this.contact);
       this.onChanges.emit(this.hasChanges);
-
-      // console.log('form value changed', this.contactForm.controls.email.errors);
     });
   }
 

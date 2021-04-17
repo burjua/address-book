@@ -78,14 +78,14 @@ describe('NewContactComponent', () => {
       expect(serviceMock.createContact).toHaveBeenCalledWith(dummyContact);
     });
 
-    it('should dispatch action, show snackBar and navigate away on success', fakeAsync(() => {
+    it('should dispatch action, show snackBar and navigate to contacts on success', fakeAsync(() => {
       serviceMock.createContact = jasmine.createSpy().and.returnValue(of({}));
 
       component.onValidContact(dummyContact);
       tick();
       expect(storeMock.dispatch).toHaveBeenCalledWith(addContact({ contact: {} as any }));
       expect(snackBarMock.open).toHaveBeenCalled();
-      expect(routerMock.navigate).toHaveBeenCalled();
+      expect(routerMock.navigate).toHaveBeenCalledWith(['/contacts']);
     }));
 
     it('should display errors on error', fakeAsync(() => {

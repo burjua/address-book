@@ -28,4 +28,33 @@ describe('ContactFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('contact form', () => {
+    it('should be invalid when empty', () => {
+      expect(component.contactForm.valid).toBeFalsy();
+    });
+  });
+
+  // test cases for email field
+  describe('email field', () => {
+    it('should be required', () => {
+      const emailCtrl = component.contactForm.controls.email;
+
+      emailCtrl.setValue('');
+      expect(emailCtrl.hasError('required')).toBeTruthy();
+
+      emailCtrl.setValue('test');
+      expect(emailCtrl.hasError('required')).toBeFalsy();
+    });
+
+    it('should be a valid email', () => {
+      const emailCtrl = component.contactForm.controls.email;
+
+      emailCtrl.setValue('test');
+      expect(emailCtrl.hasError('email')).toBeTruthy();
+
+      emailCtrl.setValue('test@test.com');
+      expect(emailCtrl.hasError('email')).toBeFalsy();
+    });
+  });
 });

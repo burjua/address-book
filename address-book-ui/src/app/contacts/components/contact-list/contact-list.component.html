@@ -1,7 +1,5 @@
 <app-header-main [title]="title"></app-header-main>
 
 <div class="contact-list">
-  <div class="contact row" *ngFor="let contact of contacts$ | async">
-    <app-contact [contact]="contact"></app-contact>
-  </div>
+  <app-contact *ngFor="let contact of contacts$ | async" [contact]="contact"></app-contact>
 </div>

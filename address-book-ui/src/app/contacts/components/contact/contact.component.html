@@ -1,21 +1,23 @@
-<div class="contact col-12">
-  <div class="contact__avatar">
-    {{ initials }}
-  </div>
-  <div class="contact__details">
-    <div class="first-name">
-      {{ contact.firstName }}
+<div class="row">
+  <div class="contact col-12">
+    <div class="contact__avatar">
+      {{ initials }}
     </div>
-    <div class="surname">
-      {{ contact.surname }}
+    <div class="contact__info">
+      <div class="contact__details">
+        <div class="first-name" title="{{ contact.firstName }}">
+          {{ contact.firstName }}
+        </div>
+        <div class="surname" title="{{ contact.surname }}">
+          {{ contact.surname }}
+        </div>
+        <div class="email">
+          <a href="mailto:{{ contact.email }}" title="{{ contact.email }}">{{ contact.email }}</a>
+        </div>
+      </div>
+      <div class="contact__controls">
+        <a routerLink="/edit/{{ contact.id }}"><i class="bi bi-pencil-square" title="Edit"></i></a>
+      </div>
     </div>
-    <div>
-      <span class="email"
-        ><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></span
-      >
-    </div>
-  </div>
-  <div class="contact__controls">
-    <a routerLink="/edit/{{ contact.id }}"><i class="bi bi-pencil-square" title="Edit"></i></a>
   </div>
 </div>

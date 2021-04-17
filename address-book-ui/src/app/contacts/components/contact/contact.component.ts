@@ -11,13 +11,14 @@ export class ContactComponent implements OnInit {
   @Input() contact: Contact = {} as Contact;
   initials = '';
 
-  constructor() {}
-
   ngOnInit(): void {
     this.initials = this.getInitials(this.contact);
   }
 
   private getInitials(contact: Contact): string {
-    return `${contact.firstName?.substring(0, 1).toUpperCase()}${contact.surname?.substring(0, 1).toUpperCase()}`;
+    if (contact && contact.firstName && contact.surname) {
+      return `${contact.firstName.substring(0, 1).toUpperCase()}${contact.surname.substring(0, 1).toUpperCase()}`;
+    }
+    return '';
   }
 }

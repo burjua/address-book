@@ -11,7 +11,7 @@
   border-bottom: 1px solid #eee;
 
   &__avatar {
-    width: 60px;
+    min-width: 60px;
     height: 100%;
     margin-right: 10px;
     background-color: #eee;
@@ -22,19 +22,24 @@
     text-align: center;
   }
 
-  &__details {
-    width: 470px;
-    margin-right: 10px;
+  &__info {
+    display: flex;
+    width: calc(100% - 60px);
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+  }
 
+  &__details {
+    margin-right: 10px;
+    max-width: calc(100% - 25px);
+
+    .first-name,
     .surname,
-    .first-name {
+    .email {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-    }
-
-    .email {
-      margin-right: 10px;
     }
   }
 }
