@@ -32,7 +32,7 @@ Sample address book application
 ### Server:
 
 - Restore NuGet packages
-- Update connection string in `appsettings.Development.json` file
+- Update connection string in `appsettings.Development.json` file in AddressBook.Api project
 - Run `Update-Database` in Package Manager Console for AddressBook.Data project to create and seed DB
 - Start with IIS Express
 - Navigate to https://localhost:44323/api/contacts
