@@ -70,18 +70,18 @@ describe('NewContactComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('onValidContact', () => {
+  describe('contactSubmitted', () => {
     it('should call createContact method on service', () => {
       serviceMock.createContact = jasmine.createSpy().and.returnValue(of({}));
 
-      component.onValidContact(dummyContact);
+      component.contactSubmitted(dummyContact);
       expect(serviceMock.createContact).toHaveBeenCalledWith(dummyContact);
     });
 
     it('should dispatch action, show snackBar and navigate to contacts on success', fakeAsync(() => {
       serviceMock.createContact = jasmine.createSpy().and.returnValue(of({}));
 
-      component.onValidContact(dummyContact);
+      component.contactSubmitted(dummyContact);
       tick();
       expect(storeMock.dispatch).toHaveBeenCalledWith(addContact({ contact: {} as any }));
       expect(snackBarMock.open).toHaveBeenCalled();
@@ -93,7 +93,7 @@ describe('NewContactComponent', () => {
         .createSpy()
         .and.returnValue(throwError({ error: [{ errorMessage: 'error1' }, { errorMessage: 'error2' }] }));
 
-      component.onValidContact(dummyContact);
+      component.contactSubmitted(dummyContact);
       tick();
       expect(storeMock.dispatch).not.toHaveBeenCalled();
       expect(snackBarMock.open).not.toHaveBeenCalled();

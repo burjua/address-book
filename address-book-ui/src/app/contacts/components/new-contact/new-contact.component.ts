@@ -29,7 +29,7 @@ export class NewContactComponent extends ContactFormContainer implements OnInit 
     this.title = 'New contact';
   }
 
-  onValidContact(contact: Contact): void {
+  contactSubmitted(contact: Contact): void {
     this.errors = undefined;
 
     this.contactService

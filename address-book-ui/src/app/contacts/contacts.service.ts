@@ -19,7 +19,7 @@ export class ContactsService {
   loadContacts(): Promise<void> {
     return new Promise((resolve) => {
       this.http.get<Contact[]>(apiUrl).subscribe((contacts) => {
-        this.store.dispatch(loadContacts({ contacts: contacts }));
+        this.store.dispatch(loadContacts({ contacts }));
       });
       resolve();
     });

@@ -40,7 +40,8 @@ Sample address book application
 ### UI:
 
 - Run `npm install`
-- Make sure server running on port **44323**
+- Make sure server is running on port **44323**
 - Run `ng serve`
 - Navigate to http://localhost:4200/
 - Run unit tests with `ng test`
+- Run lint with `ng lint`

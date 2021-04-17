@@ -36,8 +36,8 @@ const MY_FORMATS = {
 })
 export class ContactFormComponent implements OnInit {
   @Input() contact: Contact;
-  @Output() onValidContact = new EventEmitter<Contact>();
-  @Output() onChanges = new EventEmitter<boolean>();
+  @Output() contactSubmitted = new EventEmitter<Contact>();
+  @Output() formChanged = new EventEmitter<boolean>();
 
   contactForm: FormGroup;
   today = new Date();
@@ -63,14 +63,14 @@ export class ContactFormComponent implements OnInit {
 
     this.contactForm.valueChanges.subscribe((formValue) => {
       this.hasChanges = !isEqual(this.serializeForm(), this.contact);
-      this.onChanges.emit(this.hasChanges);
+      this.formChanged.emit(this.hasChanges);
     });
   }
 
   onSubmit(): void {
     if (this.contactForm.valid) {
       const contact = this.serializeForm();
-      this.onValidContact.emit(contact);
+      this.contactSubmitted.emit(contact);
     }
   }
 
@@ -80,7 +80,8 @@ export class ContactFormComponent implements OnInit {
       firstName: this.contactForm.value.firstName,
       surname: this.contactForm.value.surname,
       email: this.contactForm.value.email,
-      dob: moment(this.contactForm.value.dob).utc(true).toISOString(), // utc(true) to avoid timezone offset. As we only need date, we don't care about timezones
+      // utc(true) to avoid timezone offset. As we only need date, we don't care about timezones
+      dob: moment(this.contactForm.value.dob).utc(true).toISOString(),
     };
   }
 }

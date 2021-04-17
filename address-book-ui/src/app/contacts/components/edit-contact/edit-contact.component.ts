@@ -40,7 +40,7 @@ export class EditContactComponent extends ContactFormContainer implements OnInit
     });
   }
 
-  onValidContact(contact: Contact): void {
+  contactSubmitted(contact: Contact): void {
     this.errors = undefined;
 
     this.contactService
@@ -49,7 +49,7 @@ export class EditContactComponent extends ContactFormContainer implements OnInit
       .subscribe(
         () => {
           // Success
-          this.store.dispatch(updateContact({ contact: contact }));
+          this.store.dispatch(updateContact({ contact }));
 
           this.showSnackBar('Contact updated!');
           this.navigateHome();

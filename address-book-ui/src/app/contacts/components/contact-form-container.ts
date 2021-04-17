@@ -11,7 +11,7 @@ export class ContactFormContainer {
 
   constructor(private router: Router, private snackBar: MatSnackBar) {}
 
-  onChanges(hasChanges: boolean): void {
+  formChanged(hasChanges: boolean): void {
     this.hasChanges = hasChanges;
   }
 

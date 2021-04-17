@@ -9,8 +9,8 @@
 
     <app-contact-form
       [contact]="contact"
-      (onValidContact)="onValidContact($event)"
-      (onChanges)="onChanges($event)"
+      (contactSubmitted)="contactSubmitted($event)"
+      (formChanged)="formChanged($event)"
     ></app-contact-form>
   </div>
 </div>
