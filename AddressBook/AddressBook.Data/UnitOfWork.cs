@@ -16,7 +16,6 @@ namespace AddressBook.Data
 
         public IContactRepository Contacts => _contactRepository = _contactRepository ?? new ContactRepository(_context);
 
-
         public async Task<int> CommitAsync()
         {
             return await _context.SaveChangesAsync();

@@ -8,6 +8,7 @@ namespace AddressBook.Api.Validators
     {
         public EditContactEmailValidator(IContactsService contactsService, int id)
         {
+            // Contact can not be updated with email that already exist for any other contact
             RuleFor(c => c.Email)
                 .Must(email => !contactsService.AnotherContactWithEmailExists(id, email)).WithMessage("Another contact with this email address already exists");
         }

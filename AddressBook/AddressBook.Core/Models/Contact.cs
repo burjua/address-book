@@ -2,6 +2,7 @@
 
 namespace AddressBook.Core.Models
 {
+    // DB entity representation
     public class Contact
     {
         public int Id { get; set; }

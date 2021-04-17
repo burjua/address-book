@@ -27,8 +27,10 @@ namespace AddressBook.Api
 
             services.AddControllers();
 
+            // New instance is created for each requiest, same instance is reused for multiple calls within the same request
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            
+            // New instance is created every time service is requested
             services.AddTransient<IContactsService, ContactsService>();
 
             services.AddAutoMapper(typeof(Startup));
